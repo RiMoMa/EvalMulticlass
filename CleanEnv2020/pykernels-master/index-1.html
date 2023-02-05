@@ -1,0 +1,84 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Unknown </title></head><body>
+<p><img alt="pyKernels" src="/doc/img/logo.png?raw=true" title="pyKernels" /></p>
+<ul>
+<li>authors: Wojciech Marian Czarnecki and Katarzyna Janocha</li>
+<li>version: 0.0.4</li>
+<li>dependencies: numpy, scipy, scikit-learn</li>
+</ul>
+<h2 id="general-description">General description</h2>
+<p>Python library for working with kernel methods in machine learning.
+Provided code is easy to use set of implementations of various
+kernel functions ranging from typical linear, polynomial or
+rbf ones through wawelet, fourier transformations, kernels
+for binary sequences and even kernels for labeled graphs.</p>
+<h2 id="sample-usage">Sample usage</h2>
+<pre><code>from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score
+import numpy as np
+
+from pykernels.basic import RBF
+
+X = np.array([[1,1], [0,0], [1,0], [0,1]])
+y = np.array([1, 1, 0, 0])
+
+print 'Testing XOR'
+
+for clf, name in [(SVC(kernel=RBF(), C=1000), 'pykernel'), (SVC(kernel='rbf', C=1000), 'sklearn')]:
+    clf.fit(X, y)
+    print name
+    print clf
+    print 'Predictions:', clf.predict(X)
+    print 'Accuracy:', accuracy_score(clf.predict(X), y)
+    print
+</code></pre>
+<h2 id="implemented-kernels">implemented Kernels</h2>
+<ul>
+<li>
+<p>Vector kernels for R^d</p>
+<ul>
+<li>Linear</li>
+<li>Polynomial</li>
+<li>RBF</li>
+<li>Cosine similarity</li>
+<li>Exponential</li>
+<li>Laplacian</li>
+<li>Rational quadratic</li>
+<li>Inverse multiquadratic</li>
+<li>Cauchy</li>
+<li>T-Student</li>
+<li>ANOVA</li>
+<li>Additive Chi^2</li>
+<li>Chi^2</li>
+<li>MinMax</li>
+<li>Min/Histogram intersection</li>
+<li>Generalized histogram intersection</li>
+<li>Spline</li>
+<li>Sorensen</li>
+<li>Tanimoto</li>
+<li>Wavelet</li>
+<li>Fourier</li>
+<li>Log (CPD)</li>
+<li>Power (CPD)</li>
+</ul>
+</li>
+<li>
+<p>Graph kernels</p>
+<ul>
+<li>
+<p>Labeled</p>
+<ul>
+<li>Shortest paths</li>
+</ul>
+</li>
+<li>
+<p>Unlabeled</p>
+<ul>
+<li>Shortest paths</li>
+<li>3,4-Graphlets</li>
+<li>Random walk</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</body></html>
